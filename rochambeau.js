@@ -13,20 +13,24 @@ function playGame(){
         // We have a tie!
         console.log("tie");
         return 0;
-    } else if (playerChoice == 0 && computerChoice == 2) {
-        // Rock beats scissors  - a win!
+    } else if ((playerChoice == 0 && computerChoice == 2) || (playerChoice == 0 && computerChoice == 4)){
+        // Rock beats scissors or lizard - a win!
         console.log("win");
         return 1;
-    } else if (playerChoice == 0 && computerChoice == 4) {
-        // Rock beats lizard - a win!
+    } else if ((playerChoice == 1 && computerChoice == 0) || (playerChoice == 1 && computerChoice == 3)) {
+        // Paper beats rock or spock - a win!
         console.log("win");
         return 1;
-    }  else if (playerChoice == 1 && computerChoice == 0) {
-        // Paper beats scissors - a win!
+    } else if ((playerChoice == 2 && computerChoice == 1) || (playerChoice == 2 && computerChoice == 4)) {
+        // Scissors beats paper or lizard - a win!
         console.log("win");
         return 1;
-    } else if (playerChoice == 2 && computerChoice == 1) {
-        // Scissors beats paper - a win!
+    } else if ((playerChoice == 3 && computerChoice == 0) || (playerChoice == 3 && computerChoice == 2)) {
+        // Spock beats rock or scissors - a win!
+        console.log("win");
+        return 1;
+    } else if ((playerChoice == 4 && computerChoice == 1) || (playerChoice == 4 && computerChoice == 3)) {
+        // Lizard beats paper or spock - a win!
         console.log("win");
         return 1;
     } else {
@@ -38,8 +42,8 @@ function playGame(){
 
 function displayScoreBoard(winsId, lossesId, tiesId){
     document.getElementById(winsId).innerHTML = score[0];
-    document.getElementById(lossesId).innerHTML = score[2];
-    document.getElementById(tiesId).innerHTML = score[1];
+    document.getElementById(lossesId).innerHTML = score[1];
+    document.getElementById(tiesId).innerHTML = score[2];
 }
 
 function updateScore(val){
@@ -61,13 +65,13 @@ function displayGameResult(resultId){
         document.getElementById(resultId).innerHTML = message + "YOU WIN!";
         document.getElementById(resultId).className = "alert alert-success";
     } else if (result == -1) {
-        updateScore(2);
+        updateScore(1);
         // Display that it was a loss
         document.getElementById(resultId).innerHTML = message + "YOU LOSE! ";
         document.getElementById(resultId).className = "alert alert-danger";
     } else {
         // Display that it was a tie
-        updateScore(1);
+        updateScore(2);
         document.getElementById(resultId).innerHTML = message + "A tie. ";
         document.getElementById(resultId).className = "alert alert-info";
     }
@@ -81,6 +85,6 @@ function storePlayerChoice(choice) {
 
 function storeComputerChoice() {
     // Generate computer's random choice
-    computerChoice = Math.floor(Math.random()*3);
+    computerChoice = Math.floor(Math.random()*5);
     console.log("Computer choice = " + computerChoice);
 }
