@@ -1,7 +1,7 @@
 // This is the varaible that stores the score.
 // score[0] = wins, score[1] = losses, score[2] = ties
 var score = [0, 0, 0];
-var matchscore = [0,0];
+var matchscore = [0, 0];
 // The variables store the current player's and computer's choices
 // 0 = Rock, 1 = Paper, 2 = Scissors 3 = Spock, 4 = Lizard
 var playerChoice;
@@ -105,7 +105,7 @@ function displayMatchResult() {
 
 function displayMatchScore(pmatchesId, cmatchesId) {
     document.getElementById(pmatchesId).innerHTML = matchscore[0];
-    document.getElementById(cmatchesId).innnerHTML = matchscore[1];
+    document.getElementById(cmatchesId).innerHTML = matchscore[1];
 }
 
 function updateMatchScore(val) {
